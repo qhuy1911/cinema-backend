@@ -13,6 +13,14 @@ public class Schedule {
     @Column(name = "datetime")
     private Date datetime;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "movie_id", nullable = false)
+    private Movie movie;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "room_id", nullable = false)
+    private Room room;
+
     public Schedule () {}
 
     public Schedule(Date datetime) {
@@ -29,6 +37,22 @@ public class Schedule {
 
     public void setDatetime(Date datetime) {
         this.datetime = datetime;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     @Override

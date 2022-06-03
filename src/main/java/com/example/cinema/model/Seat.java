@@ -15,6 +15,10 @@ public class Seat {
     @Column(name = "status")
     private boolean status;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "room_id", nullable = false)
+    private Room room;
+
     public Seat() {}
 
     public Seat(String name, boolean status) {
