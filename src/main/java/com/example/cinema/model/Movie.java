@@ -1,5 +1,8 @@
 package com.example.cinema.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,7 +16,7 @@ public class Movie {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", length = 10000)
     private String description;
 
     @Column(name = "director")
@@ -23,6 +26,7 @@ public class Movie {
     private int duration;
 
     @Column(name = "start_date")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date startDate;
 
     @Column(name = "trailer")
