@@ -13,7 +13,7 @@ public class Schedule {
     private long id;
 
     @Column(name = "datetime")
-    @JsonFormat(pattern="dd/MM/yyyy")
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private Date datetime;
 
     @ManyToOne(cascade = CascadeType.ALL)
