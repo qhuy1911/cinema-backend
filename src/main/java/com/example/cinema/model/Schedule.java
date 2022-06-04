@@ -1,5 +1,7 @@
 package com.example.cinema.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,6 +13,7 @@ public class Schedule {
     private long id;
 
     @Column(name = "datetime")
+    @JsonFormat(pattern="dd/MM/yyyy")
     private Date datetime;
 
     @ManyToOne(cascade = CascadeType.ALL)
