@@ -30,7 +30,7 @@ public class MovieController {
     @GetMapping("/movies/{id}")
     public ResponseEntity<Movie> getMovieById(@PathVariable("id") long id) {
         Movie movie = movieRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found Movie with id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found MOVIE with id = " + id));
         return new ResponseEntity<>(movie, HttpStatus.OK);
     }
 
