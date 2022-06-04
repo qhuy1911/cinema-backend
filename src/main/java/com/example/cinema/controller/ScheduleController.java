@@ -56,7 +56,7 @@ public class ScheduleController {
         schedule.setRoom(room);
         Schedule _schedule = scheduleRepository.save(schedule);
 
-        return new ResponseEntity<>(_schedule, HttpStatus.OK);
+        return new ResponseEntity<>(_schedule, HttpStatus.CREATED);
     }
 
 }
