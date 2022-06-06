@@ -41,14 +41,14 @@ public class BookingDetailController {
         return new ResponseEntity<>(bookingDetails, HttpStatus.OK);
     }
 
-    @GetMapping("/bookingdetails/{id}")
+    @GetMapping("/booking-details/{id}")
     public ResponseEntity<BookingDetail> getBookingDetailById(@PathVariable("id") long id) {
         BookingDetail bookingDetail = bookingDetailRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found BOOKING DETAIL with id = " + id));
         return new ResponseEntity<>(bookingDetail, HttpStatus.OK);
     }
 
-    @PostMapping("/bookings/{bookingId}/tickets/{ticketId}/seats/{seatId}")
+    @PostMapping("/bookings/{bookingId}/tickets/{ticketId}/seats/{seatId}/details")
     public ResponseEntity<BookingDetail> createBookingDetail(@PathVariable("bookingId") long bookingId,
                                                              @PathVariable("ticketId") long ticketId,
                                                              @PathVariable("seatId") long seatId,

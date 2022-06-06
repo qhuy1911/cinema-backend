@@ -39,3 +39,20 @@
 | GET     | /api/schedules/:scheduleId/tickets | Retrieve all Tickets with schedule id |
 | GET     | /api/tickets/:id                   | Retrieve a Ticket with its ID         |
 | POST    | /api/schedules/:scheduleId/tickets | Create a new Ticket with schedule id  |
+
+### *BOOKINGS*
+
+| Methods | URLs                         | Actions                            |
+|---------|------------------------------|------------------------------------|
+| GET     | /api/users/{userId}/bookings | Retrieve all Bookings with user id |
+| GET     | /api/bookings/{id}           | Retrieve a Booking with its ID     |
+| POST    | /api/user/{userId}/bookings  | Create a new Booking with user id  |
+
+### *BOOKING DETAILs*
+
+| Methods | URLs                                                                | Actions                                                   |
+|---------|---------------------------------------------------------------------|-----------------------------------------------------------|
+| GET     | /api/bookings/{bookingId}/details                                   | Retrieve all BookingDetails with booking id               |
+| GET     | /api/booking-details/{id}                                           | Retrieve a BookingDetails with its ID                     |
+| POST    | /api/bookings/{bookingId}/tickets/{ticketId}/seats/{seatId}/details | Create a new BookingDetails with booking, ticket, seat id |
+
