@@ -56,3 +56,28 @@
 | GET     | /api/booking-details/{id}                                           | Retrieve a BookingDetails with its ID                     |
 | POST    | /api/bookings/{bookingId}/tickets/{ticketId}/seats/{seatId}/details | Create a new BookingDetails with booking, ticket, seat id |
 
+### *USER*
+
+| Methods | URLs             | Actions                     |
+|---------|------------------|-----------------------------|
+| POST    | /api/auth/signin | Login by username, password |
+| POST    | /api/auth/signup | Register a new user         |
+
+#### - Sign in:
+
+{<br/>
+    "username": "admin",<br/>
+    "password": "123123"<br/>
+}<br/>
+
+#### - Sign up:
+
+{<br/>
+    "fullname": "Quoc Huy",<br/>
+    "username": "qhuy1911",<br/>
+    "password": "191100",<br/>
+    "email": "qhuy1911@gmail.com",<br/>
+    "phone": "#",<br/>
+    "address": "#",<br/>
+    "role": ["user"]<br/>
+}<br/>
