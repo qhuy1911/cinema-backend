@@ -81,3 +81,9 @@
     "address": "#",<br/>
     "role": ["user"]<br/>
 }<br/>
+
+### *ROLES*
+
+#### - Create 2 default roles:
+    INSERT INTO roles(name) VALUES('ROLE_USER');
+    INSERT INTO roles(name) VALUES('ROLE_ADMIN');
