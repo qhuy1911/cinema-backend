@@ -1,6 +1,8 @@
 package com.example.cinema.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,8 +18,9 @@ public class Schedule {
     @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private Date datetime;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "movie_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Movie movie;
 
     @ManyToOne(cascade = CascadeType.ALL)

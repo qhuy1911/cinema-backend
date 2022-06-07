@@ -59,4 +59,19 @@ public class ScheduleController {
         return new ResponseEntity<>(_schedule, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/schedules/{id}")
+    public ResponseEntity<Schedule> deleteSchedule(@PathVariable("id") long id) {
+        scheduleRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping("/movies/{movieId}/schedules")
+    public ResponseEntity<Schedule> deleteAllSchedulesByMovieId(@PathVariable("movieId") long movieId) {
+        if (!movieRepository.existsById(movieId)) {
+            throw new ResourceNotFoundException("Not found MOVIE with id = " + movieId);
+        }
+        scheduleRepository.deleteByMovieId(movieId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }
