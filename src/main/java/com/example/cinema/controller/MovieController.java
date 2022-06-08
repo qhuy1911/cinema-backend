@@ -21,9 +21,6 @@ public class MovieController {
     @Autowired
     MovieRepository movieRepository;
 
-//    @Autowired
-//    ScheduleRepository scheduleRepository;
-
     @GetMapping("/movies")
     public ResponseEntity<List<Movie>> getAllMovies() {
         List<Movie> movies = new ArrayList<>();
@@ -41,7 +38,7 @@ public class MovieController {
     }
 
     @PostMapping("/movies")
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Movie> createMovie(@RequestBody Movie movie) {
         Movie _movie = movieRepository.save(new Movie(
                 movie.getName(),
@@ -49,6 +46,7 @@ public class MovieController {
                 movie.getDirector(),
                 movie.getDuration(),
                 movie.getStartDate(),
+                movie.getImage(),
                 movie.getTrailer()
         ));
         return new ResponseEntity<>(_movie, HttpStatus.CREATED);

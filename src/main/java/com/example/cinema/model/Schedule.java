@@ -23,8 +23,9 @@ public class Schedule {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Movie movie;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "room_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Room room;
 
     public Schedule () {}

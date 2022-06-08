@@ -1,5 +1,8 @@
 package com.example.cinema.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,8 +15,9 @@ public class Ticket {
     @Column(name = "price")
     private int price;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "schedule_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Schedule schedule;
 
     public Ticket() {}
