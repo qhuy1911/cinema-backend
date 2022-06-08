@@ -59,6 +59,25 @@ public class ScheduleController {
         return new ResponseEntity<>(_schedule, HttpStatus.CREATED);
     }
 
+    @PutMapping("/movies/{movieId}/rooms/{roomId}/schedules/{id}")
+    public ResponseEntity<Schedule> updateSchedule(@PathVariable("id") long id, @PathVariable("movieId") long movieId, @PathVariable("roomId") long roomId, @RequestBody Schedule schedule) {
+        // Get Movie
+        Movie movie = movieRepository.findById(movieId)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found MOVIE with id = " + movieId));
+        // Get Room
+        Room room = roomRepository.findById(roomId)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found ROOM with id = " + roomId));
+        // Get Schedule
+        Schedule _schedule = scheduleRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found SCHEDULE with id = " + id));
+
+        // Update Schedule
+        _schedule.setMovie(movie);
+        _schedule.setRoom(room);
+        _schedule.setDatetime(schedule.getDatetime());
+        return new ResponseEntity<>(scheduleRepository.save(_schedule), HttpStatus.OK);
+    }
+
     @DeleteMapping("/schedules/{id}")
     public ResponseEntity<Schedule> deleteSchedule(@PathVariable("id") long id) {
         scheduleRepository.deleteById(id);
