@@ -29,17 +29,21 @@ public class Movie {
     @JsonFormat(pattern="dd/MM/yyyy")
     private Date startDate;
 
+    @Column(name = "image")
+    private String image;
+
     @Column(name = "trailer")
     private String trailer;
 
     public Movie(){}
 
-    public Movie(String name, String description, String director, int duration, Date startDate, String trailer) {
+    public Movie(String name, String description, String director, int duration, Date startDate, String image, String trailer) {
         this.name = name;
         this.description = description;
         this.director = director;
         this.duration = duration;
         this.startDate = startDate;
+        this.image = image;
         this.trailer = trailer;
     }
 
@@ -85,6 +89,14 @@ public class Movie {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getTrailer() {

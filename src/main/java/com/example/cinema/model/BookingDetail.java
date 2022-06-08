@@ -1,5 +1,8 @@
 package com.example.cinema.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,16 +12,19 @@ public class BookingDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "booking_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Booking booking;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "ticket_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Ticket ticket;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "seat_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Seat seat;
 
     public BookingDetail() {}
