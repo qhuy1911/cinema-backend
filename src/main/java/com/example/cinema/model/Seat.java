@@ -19,9 +19,9 @@ public class Seat {
     private boolean status;
 
     @ManyToOne()
-    @JoinColumn(name = "room_id", nullable = false)
+    @JoinColumn(name = "schedule_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private Room room;
+    private Schedule schedule;
 
     public Seat() {}
 
@@ -50,12 +50,12 @@ public class Seat {
         this.status = status;
     }
 
-    public Room getRoom() {
-        return room;
+    public Schedule getSchedule() {
+        return schedule;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     @Override

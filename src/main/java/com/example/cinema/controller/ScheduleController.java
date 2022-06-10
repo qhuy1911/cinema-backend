@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,6 +27,15 @@ public class ScheduleController {
 
     @Autowired
     RoomRepository roomRepository;
+
+    @GetMapping("/schedules")
+    public ResponseEntity<List<Schedule>> getAllSchedules() {
+        List<Schedule> schedules = new ArrayList<>();
+        scheduleRepository.findAll().forEach(schedules::add);
+        if (schedules.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(schedules, HttpStatus.OK);
+    }
 
     @GetMapping("/movies/{movieId}/schedules")
     public ResponseEntity<List<Schedule>> getAllSchedulesByMovieId(@PathVariable("movieId") long movieId) {
@@ -90,6 +100,15 @@ public class ScheduleController {
             throw new ResourceNotFoundException("Not found MOVIE with id = " + movieId);
         }
         scheduleRepository.deleteByMovieId(movieId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping("/rooms/{roomId}/schedules")
+    public ResponseEntity<Schedule> deleteAllScheduleByRoomId(@PathVariable("movieId") long roomId) {
+        if (!roomRepository.existsById(roomId)) {
+            throw new ResourceNotFoundException("Not found ROOM with id = " + roomId);
+        }
+        scheduleRepository.deleteByRoomId(roomId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

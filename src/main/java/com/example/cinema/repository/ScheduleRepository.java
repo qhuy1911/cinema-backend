@@ -11,4 +11,7 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 
     @Transactional
     void deleteByMovieId(long movieId);
+
+    @Transactional
+    void deleteByRoomId(long roomId);
 }
