@@ -2,27 +2,38 @@
 
 ### *MOVIES*
 
-| Methods | URLs            | Actions                      |
-|---------|-----------------|------------------------------|
-| GET     | /api/movies     | Retrieve all Movies          |
-| GET     | /api/movies/:id | Retrieve a movie with its ID |
-| POST    | /api/movies     | Create a new Movie           |
+| Methods | URLs            | Actions                                 |
+|---------|-----------------|-----------------------------------------|
+| GET     | /api/movies     | Retrieve all Movies                     |
+| GET     | /api/movies/:id | Retrieve a movie with its ID            |
+| POST    | /api/movies     | Create a new Movie                      |
+| PUT     | /movies/{id}    | Update a Movie by ID                    |
+| DELETE  | /movies/{id}    | Delete a Movie (and its Schedule) by ID |
+| DELETE  | /movies         | Delete all Movies                       |
 
 ### *ROOMS*
 
-| Methods | URLs           | Actions                     |
-|---------|----------------|-----------------------------|
-| GET     | /api/rooms     | Retrieve all Rooms          |
-| GET     | /api/rooms/:id | Retrieve a Room with its ID |
-| POST    | /api/rooms     | Create a new Room           |
+| Methods | URLs           | Actions                                |
+|---------|----------------|----------------------------------------|
+| GET     | /api/rooms     | Retrieve all Rooms                     |
+| GET     | /api/rooms/:id | Retrieve a Room with its ID            |
+| POST    | /api/rooms     | Create a new Room                      |
+| PUT     | /rooms/{id}    | Update a Room by ID                    |
+| DELETE  | /rooms/{id}    | Delete a Room (and its Schedule) by ID |
+| DELETE  | /rooms         | Delete all Movies                      |
 
 ### *SCHEDULES*
 
-| Methods | URLs                                         | Actions                                         |
-|---------|----------------------------------------------|-------------------------------------------------|
-| GET     | /api/movies/:movieId/schedules               | Retrieve all Schedules with movie id            |
-| GET     | /api/schedules/:id                           | Retrieve a Schedule with its ID                 |
-| POST    | /api/movies/:movieId/rooms/:roomId/schedules | Create a new Schedule with movie id and room id |
+| Methods | URLs                                            | Actions                                         |
+|---------|-------------------------------------------------|-------------------------------------------------|
+| GET     | /api/schedules                                  | Retrieve all Schedules                          |
+| GET     | /api/movies/:movieId/schedules                  | Retrieve all Schedules with movie id            |
+| GET     | /api/schedules/:id                              | Retrieve a Schedule with its ID                 |
+| POST    | /api/movies/:movieId/rooms/:roomId/schedules    | Create a new Schedule with movie id and room id |
+| PUT     | /movies/{movieId}/rooms/{roomId}/schedules/{id} | Update a Schedule by id with movie, room id     |
+| DELETE  | /schedules/{id}                                 | Delete a Schedule (and its Ticket) with id      |
+| DELETE  | /movies/{movieId}/schedules                     | Delete all Schedules of a Movie                 |
+| DELETE  | /rooms/{roomId}/schedules                       | Delete all Schedules of a Room                  |
 
 ### *SEATS*
 
@@ -31,6 +42,7 @@
 | GET     | /api/rooms/:roomId/seats | Retrieve all Seats with room id |
 | GET     | /api/seats/:id           | Retrieve a Room with its ID     |
 | POST    | /api/rooms/:roomId/seats | Create a new Seat with room id  |
+|         |                          |                                 |
 
 ### *TICKETS*
 
