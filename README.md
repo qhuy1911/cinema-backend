@@ -37,12 +37,11 @@
 
 ### *SEATS*
 
-| Methods | URLs                     | Actions                         |
-|---------|--------------------------|---------------------------------|
-| GET     | /api/rooms/:roomId/seats | Retrieve all Seats with room id |
-| GET     | /api/seats/:id           | Retrieve a Room with its ID     |
-| POST    | /api/rooms/:roomId/seats | Create a new Seat with room id  |
-|         |                          |                                 |
+| Methods | URLs                             | Actions                             |
+|---------|----------------------------------|-------------------------------------|
+| GET     | /api/schedules/:scheduleId/seats | Retrieve all Seats with schedule id |
+| GET     | /api/seats/:id                   | Retrieve a Room with its ID         |
+| POST    | /api/schedules/:scheduleId/seats | Create a new Seat with schedule id  |
 
 ### *TICKETS*
 
