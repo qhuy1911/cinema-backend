@@ -2,10 +2,12 @@ package com.example.cinema.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@CrossOrigin(origins = "*")
 @Entity
 @Table(name = "movies")
 public class Movie {
