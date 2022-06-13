@@ -12,10 +12,14 @@ public class Room {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "status")
+    private boolean status;
+
     public Room() {}
 
     public Room(String name) {
         this.name = name;
+        this.status = true; // true is empty room
     }
 
     public long getId() {
@@ -28,6 +32,14 @@ public class Room {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     @Override
