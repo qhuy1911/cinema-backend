@@ -34,9 +34,9 @@ public class BookingDetailController {
     SeatRepository seatRepository;
 
     @GetMapping("/bookings/{bookingId}/details")
-    public ResponseEntity<List<BookingDetail>> getAllBookingDetailsByBookingId(@PathVariable("bookingIs") long bookingId) {
-        if (bookingRepository.existsById(bookingId)) {
-            throw new ResourceNotFoundException("Not found BOOKING with id =" + bookingId);
+    public ResponseEntity<List<BookingDetail>> getAllBookingDetailsByBookingId(@PathVariable("bookingId") long bookingId) {
+        if (!bookingRepository.existsById(bookingId)) {
+            throw new ResourceNotFoundException("Not found BOOKING with id = " + bookingId);
         }
         List<BookingDetail> bookingDetails = bookingDetailRepository.findByBookingId(bookingId);
         return new ResponseEntity<>(bookingDetails, HttpStatus.OK);
