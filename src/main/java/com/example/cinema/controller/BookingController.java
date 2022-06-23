@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -21,6 +22,16 @@ public class BookingController {
 
     @Autowired
     UserRepository userRepository;
+
+    @GetMapping("/bookings")
+    public ResponseEntity<List<Booking>> getAllBookings() {
+        List<Booking> bookings = new ArrayList<>();
+        bookingRepository.findAll().forEach(bookings::add);
+        if (bookings.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(bookings, HttpStatus.OK);
+    }
 
     @GetMapping("/users/{userId}/bookings")
     public ResponseEntity<List<Booking>> getAllBookingsByUserId(@PathVariable("userId") long userId) {
