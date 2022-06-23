@@ -55,6 +55,7 @@
 
 | Methods | URLs                         | Actions                            |
 |---------|------------------------------|------------------------------------|
+| GET     | /api/bookings                | Retrieve all Bookings              |
 | GET     | /api/users/{userId}/bookings | Retrieve all Bookings with user id |
 | GET     | /api/bookings/{id}           | Retrieve a Booking with its ID     |
 | POST    | /api/user/{userId}/bookings  | Create a new Booking with user id  |
@@ -63,6 +64,7 @@
 
 | Methods | URLs                                                                | Actions                                                   |
 |---------|---------------------------------------------------------------------|-----------------------------------------------------------|
+| GET     | /api/details                                                        | Retrieve all BookingDetails                               |
 | GET     | /api/bookings/{bookingId}/details                                   | Retrieve all BookingDetails with booking id               |
 | GET     | /api/booking-details/{id}                                           | Retrieve a BookingDetails with its ID                     |
 | POST    | /api/bookings/{bookingId}/tickets/{ticketId}/seats/{seatId}/details | Create a new BookingDetails with booking, ticket, seat id |
