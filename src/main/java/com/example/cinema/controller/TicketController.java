@@ -8,6 +8,7 @@ import com.example.cinema.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,9 +41,10 @@ public class TicketController {
     }
 
     @PostMapping("/schedules/{scheduleId}/tickets")
-    public ResponseEntity<Ticket> createTicket(@PathVariable("scheduleId") long scheduleId, @RequestBody Ticket ticket) {
+    public ResponseEntity<Ticket> createTicket(@PathVariable("scheduleId") long scheduleId, @Nullable Ticket ticket) {
         Ticket _ticket = scheduleRepository.findById(scheduleId).map(schedule -> {
             ticket.setSchedule(schedule);
+            ticket.setPrice(45000);
             return ticketRepository.save(ticket);
         }).orElseThrow(() -> new ResourceNotFoundException("Not found SCHEDULE with id = " + scheduleId));
         return new ResponseEntity<>(_ticket, HttpStatus.CREATED);
