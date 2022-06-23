@@ -15,7 +15,7 @@ public class Schedule {
     private long id;
 
     @Column(name = "datetime")
-    @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private Date datetime;
 
     @ManyToOne()
