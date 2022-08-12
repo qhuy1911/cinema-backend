@@ -9,6 +9,8 @@ import java.util.List;
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     List<Schedule> findByMovieId(Long movieId);
 
+    List<Schedule> findByTheaterId(Long theaterId);
+
     @Transactional
     void deleteByMovieId(long movieId);
 

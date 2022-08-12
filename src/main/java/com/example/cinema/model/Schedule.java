@@ -28,6 +28,11 @@ public class Schedule {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Room room;
 
+    @ManyToOne()
+    @JoinColumn(name = "theater_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Theater theater;
+
     public Schedule () {}
 
     public Schedule(Date datetime) {
@@ -62,11 +67,11 @@ public class Schedule {
         this.room = room;
     }
 
-    @Override
-    public String toString() {
-        return "Schedule{" +
-                "id=" + id +
-                ", datetime=" + datetime +
-                '}';
+    public Theater getTheater() {
+        return theater;
+    }
+
+    public void setTheater(Theater theater) {
+        this.theater = theater;
     }
 }
