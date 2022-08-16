@@ -60,6 +60,16 @@ public class BookingDetailController {
         return new ResponseEntity<>(bookingDetail, HttpStatus.OK);
     }
 
+    @GetMapping("/tickets/{ticketId}/details")
+    public ResponseEntity<BookingDetail> getBookingDetailByTicketId(@PathVariable("ticketId") long ticketId) {
+        if (!ticketRepository.existsById(ticketId)) {
+            throw new ResourceNotFoundException("Not found TICKET with id = " + ticketId);
+        }
+        BookingDetail bookingDetails = bookingDetailRepository.findByTicketId(ticketId);
+        return new ResponseEntity<>(bookingDetails, HttpStatus.OK);
+    }
+
+
     @PostMapping("/bookings/{bookingId}/tickets/{ticketId}/seats/{seatId}/details")
     public ResponseEntity<BookingDetail> createBookingDetail(@PathVariable("bookingId") long bookingId,
                                                              @PathVariable("ticketId") long ticketId,
