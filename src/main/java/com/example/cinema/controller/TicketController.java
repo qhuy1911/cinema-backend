@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000/")
@@ -23,6 +25,16 @@ public class TicketController {
 
     @Autowired
     ScheduleRepository scheduleRepository;
+
+    @GetMapping("/tickets")
+    public ResponseEntity<List<Ticket>> getAllTickets() {
+        List<Ticket> tickets = new ArrayList<>();
+        ticketRepository.findAll().forEach(tickets::add);
+        if (tickets.isEmpty())
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        Collections.reverse(tickets);
+        return new ResponseEntity<>(tickets, HttpStatus.OK);
+    }
 
     @GetMapping("/schedules/{scheduleId}/tickets")
     public ResponseEntity<List<Ticket>> getAllTicketByScheduleId(@PathVariable("scheduleId") long scheduleId) {
